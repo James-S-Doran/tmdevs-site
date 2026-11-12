@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dumped — TMDevs</title>
+  <meta name="description" content="A faster, kinder way to clear your camera roll. Case study by TMDevs.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../index.html">TM<span>Devs</span></a>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#work" class="active">Work</a>
+        <a href="../index.html#tools">Tools</a>
+        <a href="https://www.tallmantravelling.co.uk">Tall Man Travelling</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap breadcrumb">
+    <a href="../index.html#work">← All work</a>
+  </div>
+
+  <section class="case-hero">
+    <div class="wrap">
+      <div class="case-badges">
+        <span class="badge live"><span class="badge-dot"></span>Live on the App Store</span>
+        <span class="badge">iOS</span>
+      </div>
+      <h1>Dumped</h1>
+      <p class="lede">A faster, kinder way to clear your camera roll. Swipe right to keep, left to delete — nothing is actually removed until you confirm the queue.</p>
+    </div>
+  </section>
+
+  <section class="wrap case-body">
+    <div>
+      <h2>The problem</h2>
+      <p>Most people are carrying thousands of photos they'll never look at again, and no real way to deal with it. Reviewing a camera roll one photo at a time is tedious, and deleting feels risky — it's easy to second-guess yourself and stop halfway through.</p>
+
+      <h2>What I built</h2>
+      <ul>
+        <li>A swipeable deck — keep or delete each photo or video with a flick, with multi-level undo if you change your mind.</li>
+        <li>A safety net: swiped-left photos queue in a "to delete" trash and are only removed from the device once you confirm.</li>
+        <li>Smart filters that do the sorting for you — Live Photos, large files, screenshots, blurred shots, and near-duplicates, all detected on-device.</li>
+        <li>A "Vacation" filter that automatically clusters geotagged photos into trips, away from home, and names them by place.</li>
+        <li>A grid view with pinch-to-select for batch decisions, plus milestone badges to mark progress without turning it into a competition.</li>
+      </ul>
+
+      <h2>Where it stands</h2>
+      <p>Live on the App Store. Free to use, with a one-time lifetime unlock for unlimited daily deletes — no subscription, no ads.</p>
+    </div>
+
+    <aside class="side-panel">
+      <h3>Stack</h3>
+      <div class="chips">
+        <span class="chip">SwiftUI</span>
+        <span class="chip">Xcode</span>
+        <span class="chip">On-device image analysis</span>
+        <span class="chip">StoreKit 2</span>
+      </div>
+      <dl>
+        <dt>Platform</dt>
+        <dd>Native iOS</dd>
+        <dt>Monetisation</dt>
+        <dd>Freemium + one-time unlock</dd>
+        <dt>Status</dt>
+        <dd>Shipped, live, iterating on feedback</dd>
+      </dl>
+    </aside>
+  </section>
+
+  <nav class="case-nav wrap">
+    <a href="../index.html#work">← All work</a>
+    <a href="creative-companion.html">Creative Companion →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>TMDevs — a project of <a href="https://www.tallmantravelling.co.uk">Tall Man Travelling</a></div>
+      <div><a href="mailto:TMDevops@proton.me">TMDevops@proton.me</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>

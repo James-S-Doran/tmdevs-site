@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paint Pairer — TMDevs</title>
+  <meta name="description" content="Pick a colour and get a considered little palette of companions to go with it — a free web tool by TMDevs.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../index.html">TM<span>Devs</span></a>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#tools" class="active">Tools</a>
+        <a href="https://www.tallmantravelling.co.uk">Tall Man Travelling</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap breadcrumb">
+    <a href="../index.html#tools">← All tools</a>
+  </div>
+
+  <section class="case-hero">
+    <div class="wrap">
+      <div class="case-badges">
+        <span class="badge live"><span class="badge-dot"></span>Free, no login</span>
+      </div>
+      <h1>Paint Pairer</h1>
+      <p class="lede">Pick a colour and get a small, considered palette of companions — a warm neighbour, a cool neighbour, a complement, a ceiling tint, and a deep accent — named in the spirit of a designer paint chart.</p>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding: 0 0 72px;">
+    <div class="tool-shell">
+      <p class="tool-intro">Everything here runs in your browser — nothing is uploaded or stored.</p>
+
+      <div class="picker-row">
+        <input type="color" id="colorPicker" class="swatch-input" value="#5B7C6B" aria-label="Pick a base colour">
+        <input type="text" id="hexInput" class="hex-input" value="#5B7C6B" maxlength="7" aria-label="Hex code">
+        <button class="btn primary" id="pairBtn">Pair it</button>
+      </div>
+      <p class="picker-hint">Click a square's colour to copy its hex code.</p>
+
+      <div class="swatch-grid" id="swatchGrid"></div>
+    </div>
+  </section>
+
+  <nav class="case-nav wrap">
+    <a href="../index.html#tools">← All tools</a>
+    <span></span>
+  </nav>
+
+  <div class="toast" id="toast">Copied</div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>TMDevs — a project of <a href="https://www.tallmantravelling.co.uk">Tall Man Travelling</a></div>
+      <div><a href="mailto:TMDevops@proton.me">TMDevops@proton.me</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/paint-pairer.js"></script>
+  <script>
+    (function () {
+      const picker = document.getElementById("colorPicker");
+      const hexInput = document.getElementById("hexInput");
+      const grid = document.getElementById("swatchGrid");
+      const toast = document.getElementById("toast");
+      const pairBtn = document.getElementById("pairBtn");
+
+      function isValidHex(v) {
+        return /^#?[0-9a-fA-F]{6}$/.test(v.trim());
+      }
+
+      function normaliseHex(v) {
+        v = v.trim();
+        return v.startsWith("#") ? v : `#${v}`;
+      }
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(() => toast.classList.remove("show"), 1400);
+      }
+
+      function render(hex) {
+        const palette = window.PaintPairer.generatePalette(hex);
+        if (!palette) return;
+        grid.innerHTML = "";
+        palette.forEach((sw) => {
+          const card = document.createElement("div");
+          card.className = "swatch";
+
+          const colorBtn = document.createElement("button");
+          colorBtn.className = "swatch-color";
+          colorBtn.style.background = sw.hex;
+          colorBtn.type = "button";
+          colorBtn.setAttribute("aria-label", `Copy ${sw.hex}`);
+          colorBtn.addEventListener("click", () => {
+            navigator.clipboard
+              .writeText(sw.hex)
+              .then(() => showToast(`Copied ${sw.hex}`))
+              .catch(() => showToast("Could not copy"));
+          });
+
+          const info = document.createElement("div");
+          info.className = "swatch-info";
+          info.innerHTML = `
+            <p class="swatch-role">${sw.role}</p>
+            <p class="swatch-name">${sw.name}</p>
+            <p class="swatch-hex">${sw.hex}</p>
+          `;
+
+          card.appendChild(colorBtn);
+          card.appendChild(info);
+          grid.appendChild(card);
+        });
+      }
+
+      function runFromHex(v) {
+        if (!isValidHex(v)) {
+          showToast("Enter a valid hex colour");
+          return;
+        }
+        const hex = normaliseHex(v);
+        picker.value = hex;
+        hexInput.value = hex;
+        render(hex);
+      }
+
+      picker.addEventListener("input", () => {
+        hexInput.value = picker.value;
+        render(picker.value);
+      });
+
+      hexInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") runFromHex(hexInput.value);
+      });
+
+      pairBtn.addEventListener("click", () => runFromHex(hexInput.value));
+
+      render(picker.value);
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roomhub — TMDevs</title>
+  <meta name="description" content="Invite-only room booking for a therapy clinic. Case study by TMDevs.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="../index.html">TM<span>Devs</span></a>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#work" class="active">Work</a>
+        <a href="../index.html#tools">Tools</a>
+        <a href="https://www.tallmantravelling.co.uk">Tall Man Travelling</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap breadcrumb">
+    <a href="../index.html#work">← All work</a>
+  </div>
+
+  <section class="case-hero">
+    <div class="wrap">
+      <div class="case-badges">
+        <span class="badge live"><span class="badge-dot"></span>Live on TestFlight</span>
+        <span class="badge">iOS</span>
+        <span class="badge">Android</span>
+      </div>
+      <h1>Roomhub</h1>
+      <p class="lede">Invite-only room booking for a small therapy clinic — built for the practitioners who book rooms, and the reception kiosk that shouldn't see why.</p>
+    </div>
+  </section>
+
+  <section class="wrap case-body">
+    <div>
+      <h2>The problem</h2>
+      <p>An acupuncture and talking-therapy clinic shares a handful of treatment rooms between several practitioners and a walk-in reception desk. Spreadsheets and group chats led to double-bookings, and client details were visible to anyone who could see the diary — a real problem for a therapy practice.</p>
+
+      <h2>What I built</h2>
+      <ul>
+        <li>A practitioner calendar with automatic conflict prevention — two people simply can't book the same room at the same time.</li>
+        <li>A dedicated walk-in kiosk mode for reception: it shows rooms as booked or free, and nothing else — no names, no notes, no reasons.</li>
+        <li>An approval workflow for cancellations and reschedules, with a full audit trail of every change.</li>
+        <li>An admin suite for managing rooms, staff accounts and approvals in one place.</li>
+        <li>Data export and erasure tools built in from day one, not bolted on later, given the sensitivity of therapy records.</li>
+      </ul>
+
+      <h2>Where it stands</h2>
+      <p>Live on TestFlight and in daily use by real clinic staff and reception.</p>
+    </div>
+
+    <aside class="side-panel">
+      <h3>Stack</h3>
+      <div class="chips">
+        <span class="chip">Expo / React Native</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Supabase</span>
+        <span class="chip">Postgres RLS</span>
+      </div>
+      <dl>
+        <dt>Platform</dt>
+        <dd>iOS &amp; Android</dd>
+        <dt>Access model</dt>
+        <dd>Invite-only — admin, practitioner, kiosk</dd>
+        <dt>Status</dt>
+        <dd>Live, in real clinical use</dd>
+      </dl>
+    </aside>
+  </section>
+
+  <nav class="case-nav wrap">
+    <a href="doctors-note.html">← Doctor's Note</a>
+    <a href="../index.html#tools">Web tools →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>TMDevs — a project of <a href="https://www.tallmantravelling.co.uk">Tall Man Travelling</a></div>
+      <div><a href="mailto:TMDevops@proton.me">TMDevops@proton.me</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>
